@@ -1,6 +1,7 @@
 import React from 'react';
-import './style.scss';
 import { withRouter } from 'react-router-dom';
+
+import './style.scss';
 
 const ProductItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
   return (
