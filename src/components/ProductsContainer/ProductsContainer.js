@@ -7,38 +7,42 @@ const ProductsContainer = () => {
 
   const [productCategories, setProductCategories] = useState([
     {
-      title: 'hatssss',
-      imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
-      id: 1
+      title: 'T-shirts',
+      linkUrl: 'tshirts',
+      id: 1,
     },
     {
-      title: 'jackets',
+      title: 'hoodies',
       imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
-      id: 2
+      linkUrl: 'hoodies',
+      id: 2,
     },
     {
-      title: 'sneakers',
-      imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
-      id: 3
+      title: 'hats',
+      imageUrl: 'https://i.ibb.co/4grXBvK/pexels-tim-eiden-1374370.jpg',
+      linkUrl: 'hats',
+      id: 3,
     },
     {
       title: 'womens',
       imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
       size: 'large',
-      id: 4
+      linkUrl: 'womens',
+      id: 4,
     },
     {
       title: 'mens',
-      imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+      imageUrl: 'https://i.ibb.co/M1JV3Lk/pexels-wallace-chuck-2834921.jpg',
+      linkUrl: 'mens',
       size: 'large',
-      id: 5
-    }
+      id: 5,
+    },
   ]);
 
   return (
     <div className="product-container">
-      {productCategories.map(({ title, imageUrl, id, size }) => (
-          <ProductItem key={id} title={title} imageUrl={imageUrl} size={size} />
+      {productCategories.map(({ id, ...productProps }) => (
+          <ProductItem key={id} {...productProps} />
         ))}
     </div>
   );

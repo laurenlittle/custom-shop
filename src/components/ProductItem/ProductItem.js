@@ -1,12 +1,18 @@
 import React from 'react';
 import './style.scss';
+import { withRouter } from 'react-router-dom';
 
-const ProductItem = ({ title, imageUrl }) => {
+const ProductItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
   return (
     <div
-      style={{backgroundImage: `url(${imageUrl})`}}
-      className="product-item"
+      className={`${size} product-item`}
+      onClick={() => history.push(`${match.url}${linkUrl}`)}
     >
+      <div
+        className="background-image"
+        style={{backgroundImage: `url(${imageUrl})`}}
+      >
+      </div>
       <div className="content">
         <h1 className="title">{title}</h1>
         <span className="subtitle">Get Started</span>
@@ -15,4 +21,4 @@ const ProductItem = ({ title, imageUrl }) => {
   );
 };
 
-export default ProductItem;
+export default withRouter(ProductItem);
