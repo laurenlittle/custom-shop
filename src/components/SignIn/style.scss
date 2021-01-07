@@ -1,0 +1,14 @@
+.signin {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+
+  &-title,
+  &-subtitle {
+    font-family: 'Open Sans Condensed';
+  }
+
+  &-subtitle {
+    font-size: 20px;
+  }
+}
