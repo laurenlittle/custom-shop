@@ -5,17 +5,32 @@ import Header from './components/Header/Header';
 import LandingPage from './pages/LandingPage/LandingPage';
 import ShopPage from './pages/ShopPage/ShopPage';
 import AuthPage from './pages/AuthPage/AuthPage';
-import { auth } from './utils/firebase';
+
+import { auth, userProfile } from './utils/firebase';
 
 function App() {
 
   const [ currentUser, setCurrentUser ] = useState(null);
 
+  // Review/Refactor
   useEffect(() => {
     let unsubscribeFromAuth = null;
 
-    unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      setCurrentUser(user);
+    unsubscribeFromAuth = auth.onAuthStateChanged( async user => {
+
+      if(user) {
+        const userRef = await userProfile(user);
+
+        // Get user data and update state
+        userRef.onSnapshot(snapShot => {
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
+          })
+        })
+      } else {
+        setCurrentUser(user);
+      }
     });
 
     return () => unsubscribeFromAuth();

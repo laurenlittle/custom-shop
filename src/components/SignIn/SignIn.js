@@ -59,6 +59,7 @@ const SignIn = () => {
             Sign In
           </Button>
           <Button
+            type="button"
             onClick={signInWithGoogle}
             googleSignIn
           >
