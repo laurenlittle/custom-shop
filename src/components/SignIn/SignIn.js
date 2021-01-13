@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { signInWithGoogle } from '../../utils/firebase';
+
 import './style.scss';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -51,9 +53,18 @@ const SignIn = () => {
           handleChange={handleChange}
           required
         />
-        <Button type="submit">
-          Sign In
-        </Button>
+
+        <div className="button-group">
+          <Button type="submit">
+            Sign In
+          </Button>
+          <Button
+            onClick={signInWithGoogle}
+            googleSignIn
+          >
+            Sign In with Google
+          </Button>
+        </div>
       </form>
     </div>
 

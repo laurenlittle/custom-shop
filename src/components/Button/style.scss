@@ -16,9 +16,23 @@
   color: $white;
   background: $dark;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     background-color: $white;
     color: $dark;
     border: 1px solid $dark;
+  }
+
+  &.google-button {
+    background: #4285f4;
+    color: $white;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: darken(#4285f4, 2);
+      border: none;
+    }
   }
 }
