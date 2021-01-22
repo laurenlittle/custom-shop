@@ -1,4 +1,4 @@
-.signin {
+.signup {
   width: 30vw;
   display: flex;
   flex-direction: column;
@@ -14,10 +14,5 @@
 
   &-subtitle {
     font-size: 20px;
-  }
-
-  .button-group {
-    display: flex;
-    justify-content: space-between;
   }
 }
