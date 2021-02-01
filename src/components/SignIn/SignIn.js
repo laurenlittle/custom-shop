@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { signInWithGoogle } from '../../utils/firebase';
+import { auth, signInWithGoogle } from '../../utils/firebase';
 
 import './style.scss';
 import Input from '../Input/Input';
@@ -15,7 +15,6 @@ const SignIn = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    console.log(name, value);
     setLoginInfo(
       {
         ...loginInfo,
@@ -24,9 +23,22 @@ const SignIn = () => {
     )
   }
 
-  const handleSubmit = e => {
+  const handleSubmit =  async e => {
     e.preventDefault();
-    console.log('handle submit')
+
+    const { email, password } = loginInfo;
+    try {
+      await auth.signInWithEmailAndPassword(email, password)
+      setLoginInfo({
+        ...loginInfo,
+        email: '',
+        password: ''
+      })
+
+    } catch(error) {
+      console.log('Unable to Login User:', error);
+    }
+
   }
 
   return(

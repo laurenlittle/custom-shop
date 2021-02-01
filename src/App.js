@@ -28,6 +28,8 @@ function App() {
             ...snapShot.data()
           })
         })
+
+        // console.log('current user', currentUser);
       } else {
         setCurrentUser(user);
       }
